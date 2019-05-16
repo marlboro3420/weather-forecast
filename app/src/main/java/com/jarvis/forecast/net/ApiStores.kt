@@ -7,6 +7,6 @@ import retrofit2.http.*
 
 
 interface ApiStores {
-    @GET("/gridpoints/LOX/157,43/forecast")
-    fun getWeatherForecast(): LiveData<ApiResponse<WeatherBean>>
+    @GET("/points/{latitude},{longitude}/forecast")
+    fun getWeatherForecast(@Path("latitude") latitude: String,@Path("longitude") longitude: String): LiveData<ApiResponse<WeatherBean>>
 }

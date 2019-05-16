@@ -10,9 +10,9 @@ import com.jarvis.forecast.net.AppClient
 class DataRepository private constructor() {
     private val apiStores = AppClient.mRetrofit.create(ApiStores::class.java)
 
-    fun getWeatherForecast(): LiveData<ApiResponse<WeatherBean>> {
+    fun getWeatherForecast(latitude: String, longitude: String): LiveData<ApiResponse<WeatherBean>> {
 
-        return apiStores.getWeatherForecast()
+        return apiStores.getWeatherForecast(latitude,longitude)
     }
 
     companion object {

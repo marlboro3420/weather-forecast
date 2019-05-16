@@ -4,8 +4,8 @@ package com.jarvis.forecast.bean
 import com.google.gson.annotations.SerializedName
 
 data class WeatherBean(
-//    @SerializedName("geometry")
-//    val geometry: Geometry,
+    @SerializedName("geometry")
+    val geometry: Geometry,
     @SerializedName("properties")
     val properties: Properties,
     @SerializedName("type")
@@ -68,17 +68,17 @@ data class WeatherBean(
         )
     }
 
-//    data class Geometry(
-//        @SerializedName("geometries")
-//        val geometries: List<Geometry>,
-//        @SerializedName("type")
-//        val type: String
-//    ) {
-//        data class Geometry(
-//            @SerializedName("coordinates")
-//            val coordinates: List<List<Any>>,
-//            @SerializedName("type")
-//            val type: String
-//        )
-//    }
+    data class Geometry(
+        @SerializedName("geometries")
+        val geometries: List<GeometrySecond>,
+        @SerializedName("type")
+        val type: String
+    ) {
+        data class GeometrySecond(
+            @SerializedName("coordinates")
+            val coordinates: List<Any>,
+            @SerializedName("type")
+            val type: String
+        )
+    }
 }
