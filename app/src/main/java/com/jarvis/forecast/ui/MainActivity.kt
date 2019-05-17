@@ -1,6 +1,7 @@
 package com.jarvis.forecast.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -31,8 +32,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWeatherInfo() {
         recyclerView.adapter = adapter
+        progressBar.visibility = View.VISIBLE
         viewModel.getWeatherForecast(locationArray)
         viewModel.liveData.observe(this, Observer {
+            if (progressBar.visibility == View.VISIBLE) {
+                progressBar.visibility = View.GONE
+            }
             adapter.submitList(it)
         })
     }

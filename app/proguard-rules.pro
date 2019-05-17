@@ -19,3 +19,32 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+-dontwarn org.apache.http.**
+-keepclassmembers class org.apache.http.** {
+*;
+}
+-dontwarn okhttp3.**
+-dontwarn com.android.tools.profiler.agent.okhttp.**
+-keep class com.android.tools.profiler.agent.okhttp.**
+-keep class okhttp3.** {*;}
+-keep interface okhttp3.**{*;}
+#okio
+-dontwarn okio.**
+-keep class okio.**{*;}
+-keep interface okio.**{*;}
+
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Exceptions
+
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+-keep class com.jarvis.forecast.bean.**{*;}
+-keep class com.jarvis.forecast.net.**{*;}

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
+    <string name="temperature_format">temperature : %s°%s</string>
+    <string name="shortForecast_format">shortForecast : %s</string>
+    <string name="mapIVDescription">weather icon</string>
 </resources>

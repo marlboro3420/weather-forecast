@@ -17,6 +17,9 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
 
     val liveData = MediatorLiveData<ArrayList<WeatherBean>>()
 
+    /**
+     * Get forecasts for cities in array
+     */
     fun getWeatherForecast(arrayList: ArrayList<LocationBean>) {
         arrayList.forEach {
             liveData.addSource(dataRepository.getWeatherForecast(it.latitude, it.longitude)) { apiResponse ->
@@ -29,8 +32,8 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
                         tempArray.add(apiResponse.body)
                         liveData.value = tempArray
                     }
-                    is ApiErrorResponse -> {
-                        Log.e("s", apiResponse.errorMessage)
+                    is ApiErrorResponse -> {//Should be handled in activity
+                        Log.e("ApiErrorResponse", apiResponse.errorMessage)
                     }
                 }
             }
